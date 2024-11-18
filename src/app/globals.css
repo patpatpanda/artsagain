@@ -1,4 +1,11 @@
-/* globals.css */
+/* Global Colors */
+:root {
+  --primary-color: #6B7754; /* Loggans gröna */
+  --background-color: #F5F5F0; /* Ljus beige */
+  --secondary-color: #3B3F33; /* Mörkgrön för kontrast */
+  --accent-color: #B8A383; /* Gyllene sand */
+  --text-color: #4A4A48; /* Mörkgrå för text */
+}
 
 /* Reset */
 body, h1, h2, p, ul, li, a {
@@ -11,18 +18,17 @@ body, h1, h2, p, ul, li, a {
 body {
   font-family: 'Roboto', sans-serif;
   line-height: 1.6;
-  color: #e0e0e0;
-  background-color: #fff;
-  margin: 0;
+  color: var(--text-color);
+  background-color: var(--background-color);
 }
 
 /* Hero Section */
 .hero {
-  height: 50vh;
   position: relative;
+  height: 50vh;
   text-align: center;
   color: white;
-  padding-bottom: 0; /* Tar bort extra padding för mobiler */
+  overflow: hidden;
 }
 
 .heroVideoWrapper {
@@ -53,109 +59,131 @@ body {
 .heroContent {
   position: relative;
   z-index: 1;
+  margin-top: 150px;
   color: white;
-}
-
-.heroContent h1 {
-  font-size: 2.5rem;
-  margin-bottom: 10px;
-}
-
-.heroContent h2 {
-  font-size: 3rem;
-  margin-bottom: 20px;
-}
-
-.heroContent p {
-  font-size: 1.2rem;
-  margin-bottom: 30px;
-}
-
-.ctaButton {
-  background: #e91e63;
-  color: white;
-  padding: 10px 20px;
-  border-radius: 5px;
-  text-decoration: none;
-  transition: background 0.3s ease;
-}
-
-.ctaButton:hover {
-  background: #c2185b;
-}
-
-/* Navigation Links */
-.navLinks {
-  display: flex;
-  gap: 30px;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  top: 100px;
-  width: 100%;
-  z-index: 2;
-
-}
-
-.heroLogoText {
-  font-size: 28px;
-  font-weight: bold;
   text-align: center;
-  margin-top: 1px;
-  color: #fff;
-  z-index: 2;
 }
 
 .heroLogo {
   max-width: 150px;
   display: block;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0 auto;
+}
+
+.heroLogoText {
+  font-size: 36px;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+/* Navigation Links */
+.navLinks {
+  display: flex;
+  gap: 50px;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 15px 30px;
+  border-radius: 10px;
   z-index: 2;
-  position: relative;
 }
 
 .navLinks a {
-  color: white;
+  color: var(--background-color);
   font-size: 1.2rem;
+  position: relative;
   text-decoration: none;
-  transition: color 0.3s ease;
 }
 
-.navLinks a:hover {
-  color: #333;
+.navLinks a::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--background-color);
+  transition: width 0.3s ease-in-out;
 }
 
-/* Section Styling */
+.navLinks a:hover::after {
+  width: 100%;
+}
+
+/* Sections */
 .section {
   padding: 60px 20px;
-  margin-top: 100px;
   text-align: center;
-  background: #fff;
+  background: var(--background-color);
+  margin-top: 200px;
 }
 
 .section h2 {
   font-size: 2rem;
-  color: #333;
+  color: var(--primary-color);
   margin-bottom: 20px;
 }
 
 .section p {
   font-size: 1rem;
-  color: #bdbdbd;
+  color: var(--text-color);
+}
+
+.aboutContent, .servicesGrid {
+  max-width: 1000px;
+  margin: 0 auto;
+  line-height: 1.8;
+}
+
+.aboutContent p, .servicesGrid p {
+  margin-bottom: 20px;
+  font-size: 1.1rem;
+}
+
+/* Cards Section */
+.cardsContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  margin-top: 50px;
+  padding: 0 20px;
+}
+
+.card {
+  background-color: var(--secondary-color);
+  color: var(--background-color);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+}
+
+.cardIcon {
+  font-size: 40px;
+  margin-bottom: 10px;
+  color: var(--accent-color);
 }
 
 /* Footer */
 .footer {
-  background: #1f1f1f;
-  color: #e0e0e0;
+  background: var(--secondary-color);
+  color: var(--background-color);
   text-align: center;
   padding: 20px 0;
-  border-top: 1px solid #333;
+  border-top: 2px solid var(--primary-color);
 }
 
 .footer a {
-  color: #e91e63;
+  color: var(--accent-color);
   text-decoration: none;
 }
 
@@ -163,171 +191,167 @@ body {
   text-decoration: underline;
 }
 
-/* Cards Section */
-.cardsContainer {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  margin-top: 50px;
-  padding: 0 20px;
+/* Separator */
+.separator {
+  width: 80%;
+  height: 2px;
+  margin: 40px auto;
+  background: var(--secondary-color);
+  opacity: 0.6;
+  border-radius: 5px;
+}
+
+.separator-gradient {
+  background: linear-gradient(90deg, var(--accent-color), var(--secondary-color), var(--accent-color));
+}
+
+/* Responsiveness */
+@media (max-width: 480px) {
+  .cardsContainer {
+    grid-template-columns: 1fr;
+  }
+
+  .heroLogo {
+    max-width: 120px;
+  }
+
+  .heroLogoText {
+    font-size: 28px;
+  }
+
+  .navLinks {
+    flex-direction: column;
+    gap: 15px;
+    top: 10px;
+    padding: 10px 20px;
+    font-size: 1rem;
+  }
+}
+
+@media (min-width: 600px) and (max-width: 768px) {
+  .cardsContainer {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1100px) {
+  .cardsContainer {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (min-width: 1100px) {
+  .cardsContainer {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    margin-left: 100px;
+  }
+}
+/* Cards Animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .card {
-  background-color: #005478;
-  color: white;
+  background-color: var(--secondary-color);
+  color: var(--background-color);
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   text-align: center;
-  flex: 1;
-  max-width: 250px;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  opacity: 0; /* Starta osynligt */
+  animation: fadeInUp 0.8s ease forwards; /* Tillämpa animationen */
+}
+
+.card:nth-child(1) {
+  animation-delay: 0s; /* Första kortet visas omedelbart */
+}
+
+.card:nth-child(2) {
+  animation-delay: 0.1s; /* Andra kortet visas med fördröjning */
+}
+
+.card:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+.card:nth-child(4) {
+  animation-delay: 0.5s;
+}
+
+.card:nth-child(5) {
+  animation-delay: 0.7s;
+}
+
+.card:nth-child(6) {
+  animation-delay: 0.9s;
+}
+
+.card:nth-child(7) {
+  animation-delay: 1.1s;
 }
 
 .card:hover {
   transform: translateY(-10px);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
 }
-
-.cardIcon {
-  font-size: 40px;
-  margin-bottom: 10px;
-}
-
-/* Responsiveness */
-
-/* För mobiler (max-width: 480px) */
-@media (max-width: 480px) {
-  .cardsContainer {
-    display: block; /* Gör container-block för vertikal layout */
-    position: static; /* Förhindra absolut positionering */
-    margin-top: 20px; /* Avstånd från hero-sektionen */
-    padding: 0 10px;
-  }
-
-  .card {
-    width: 100%; /* Kortens bredd blir 100% */
-    max-width: 100%;
-    margin: 20px 0; /* Mellanrum mellan varje kort */
-    padding: 20px;
-    box-sizing: border-box; /* Säkerställ att padding inkluderas i bredden */
-  }
-
-  .hero {
-    padding-bottom: 0; /* Ta bort extra utrymme för korten */
-  }
-}
-
-/* För mellan stora skärmar (max-width: 768px) */
-@media (max-width: 768px) {
-  .cardsContainer {
-    display: block; /* Även här en vertikal layout */
-    margin-top: 30px;
-    padding: 0 15px;
-  }
-
-  .card {
-    width: 80%;
-    max-width: 100%;
-    margin: 20px 0;
-    padding: 20px;
-  }
-}
-
-/* För större skärmar (min-width: 1024px) */
-@media (min-width: 1024px) {
-  .cardsContainer {
-    flex-direction: row; /* Placera korten horisontellt */
-    gap: 20px;
-    padding-bottom: 300px;
-  }
-
-  .card {
-    max-width: 250px;
-    padding: 20px;
-  }
-}
-/* Navigation Links */
-/* Navigation Links */
-.navLinks {
-  position: absolute;
-  top: 20px; /* Flytta navigationen ned något */
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 50px; /* Större mellanrum mellan länkar */
-  font-size: 1.5rem; /* Gör texten större */
-  z-index: 2;
- 
-  padding: 15px 30px; /* Mer padding för större bakgrund */
-  border-radius: 10px; /* Gör hörnen rundade */
-}
-
-.navLinks a {
-  color: white;
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-
-.navLinks a:hover {
-  color: #e91e63;
-}
-
-/* Hero Content */
-.heroContent {
-  position: relative;
-  z-index: 1;
-  color: white;
-  margin-top: 150px; /* Flytta ner innehållet */
+/* Services Section */
+.servicesSection {
+  background: var(--background-color);
+  padding: 60px 20px;
   text-align: center;
 }
 
-.heroLogo {
-  max-width: 150px; /* Större logotyp */
-  display: block;
+.servicesSection h2 {
+  font-size: 2.5rem;
+  color: var(--primary-color);
+  margin-bottom: 40px;
+}
+
+.servicesContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  max-width: 1200px;
   margin: 0 auto;
+  padding: 20px;
 }
 
-.heroLogoText {
-  font-size: 36px; /* Gör texten större */
-  font-weight: bold;
-  text-align: center;
-  margin-top: 20px; /* Litet avstånd från logotypen */
-  color: white;
+.serviceCard {
+  background: var(--primary-color);
+  color: var(--background-color);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: left;
 }
 
-/* Hero Section */
-.hero {
-  position: relative;
-  height: 50vh; /* Gör hero-sektionen högre */
-  overflow: hidden;
+.serviceCard h4 {
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+  color: var(--accent-color);
 }
 
-/* Responsivitet för mindre skärmar */
-@media (max-width: 768px) {
-  .heroContent {
-    margin-top: 150px; /* Flyttar ner hela innehållet */
-  }
+.serviceCard p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--background-color);
+}
 
-  .heroLogo {
-    max-width: 120px; /* Minska logotypstorlek för mobil */
-  }
-
-  .heroLogoText {
-    font-size: 28px; /* Anpassa textstorlek */
-  }
-
-  .navLinks {
-    position: absolute;
-    top: 10px; /* Placera navigationen högst upp */
-    flex-direction: column; /* Vertikal layout för navigation */
-    gap: 15px; /* Mellanrum mellan länkar */
-    padding: 10px 20px;
-    font-size: 1.2rem;
-    left: 50%;
-    transform: translateX(-50%);
-  }
-
-  .hero {
-    height: 50vh; /* Minska hero-sektionens höjd i mobil */
-  }
+.serviceCard:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+}
+.serviceIcon {
+  font-size: 3rem;
+  margin-bottom: 10px;
+  color: var(--accent-color); /* Gyllene sand för att framhäva ikonerna */
 }
