@@ -11,13 +11,32 @@ export default function Home() {
 
   const videos = ["/videos/train.mp4", "/videos/sea.mp4", "/videos/road.mp4"];
 
-  useEffect(() => {
-    const videoInterval = setInterval(() => {
-      setCurrentVideo((prevVideo) => (prevVideo + 1) % videos.length);
-    }, 5000);
+  const videoRef = useRef(null);
 
-    return () => clearInterval(videoInterval);
-  }, []);
+  useEffect(() => {
+    // Lyssna på när videon slutar spela
+    const videoElement = videoRef.current;
+
+    const handleVideoEnd = () => {
+      setCurrentVideo((prevVideo) => (prevVideo + 1) % videos.length);
+    };
+
+    videoElement.addEventListener("ended", handleVideoEnd);
+
+    return () => {
+      videoElement.removeEventListener("ended", handleVideoEnd);
+    };
+  }, [currentVideo]);
+
+  useEffect(() => {
+    // När currentVideo ändras, byt video källa och starta om
+    const videoElement = videoRef.current;
+    videoElement.src = videos[currentVideo];
+    videoElement.load();
+    videoElement.play().catch((error) => {
+      console.error("Video playback failed:", error);
+    });
+  }, [currentVideo]);
 
   const toggleLanguage = () => {
     setLanguage(language === "en" ? "sv" : "en");
@@ -28,10 +47,9 @@ export default function Home() {
       {/* Hero Section */}
       <header className="hero">
         <nav className="navLinks">
-        <button onClick={toggleLanguage} className="languageButton">
-  {language === "en" ? "Svenska" : "English"}
-</button>
-
+          <button onClick={toggleLanguage} className="languageButton">
+            {language === "en" ? "Svenska" : "English"}
+          </button>
           <a href="#about">{language === "en" ? "About" : "Om oss"}</a>
           <a href="#services">{language === "en" ? "Services" : "Tjänster"}</a>
           <a href="#contact">{language === "en" ? "Contact" : "Kontakt"}</a>
@@ -40,14 +58,10 @@ export default function Home() {
         <div className="heroVideoWrapper">
           <video
             className="heroVideo"
+            ref={videoRef} // Referens till videospelaren
             autoPlay
             muted
-            loop
-            key={currentVideo}
-          >
-            <source src={videos[currentVideo]} type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
+          />
         </div>
         <div className="heroOverlay"></div>
         <div className="heroContent">
