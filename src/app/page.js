@@ -1,11 +1,22 @@
 "use client"; // Detta gör att filen blir en klientkomponent
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Head from 'next/head';
 import './globals.css';
 
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [currentVideo, setCurrentVideo] = useState(0);
+
+  const videos = ['/videos/train.mp4', '/videos/sea.mp4', '/videos/road.mp4'];
+
+  useEffect(() => {
+    const videoInterval = setInterval(() => {
+      setCurrentVideo((prevVideo) => (prevVideo + 1) % videos.length);
+    }, 5000); // Växla video var 5:e sekund
+
+    return () => clearInterval(videoInterval); // Rensa intervallet vid avmontering
+  }, []);
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
@@ -13,30 +24,26 @@ export default function Home() {
 
   return (
     <div>
-      <Head>
-        <title>Get Lost in Norway</title>
-        <meta name="description" content="Be brave - Be inspired. Get Lost in Norway." />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
       {/* Hero Section */}
       <header className="hero">
         <div className="heroVideoWrapper">
-          <video className="heroVideo" autoPlay muted loop>
-            <source src="/videos/hero.mp4" type="video/mp4" />
+          <video className="heroVideo" key={currentVideo} autoPlay muted loop>
+            <source src={videos[currentVideo]} type="video/mp4" />
             Your browser does not support the video tag.
           </video>
         </div>
         <div className="heroOverlay"></div>
         <div className="heroContent">
-          <h1>Be brave - Be inspired</h1>
-          <h2>Get Lost in Norway</h2>
-          <p>
-            If you are a travel agent, travel planner, concierge agent, an event planner or an
-            in-house cooperative travel planner, we are ready to serve you.
-          </p>
-          <a href="#contact" className="ctaButton">Contact us</a>
+          <img src="/images/logo.png" alt="Logotyp" className="heroLogo" />
+          <h3 className="heroLogoText">Arts Logistics</h3>
         </div>
+ {/* Cards */}
+ <div className="heroCards">
+    <div className="card">Card 1</div>
+    <div className="card">Card 2</div>
+    <div className="card">Card 3</div>
+    <div className="card halfInSection">Card 4</div>
+  </div>
 
         {/* Hamburger Menu */}
         <div className="hamburger" onClick={toggleMenu}>
@@ -49,7 +56,6 @@ export default function Home() {
           <a href="#about">Om oss</a>
           <a href="#inspired">Tjänster</a>
           <a href="#destinations">Kontakt</a>
-         
         </nav>
       </header>
 

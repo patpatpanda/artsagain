@@ -12,7 +12,7 @@ body {
   font-family: 'Roboto', sans-serif;
   line-height: 1.6;
   color: #e0e0e0;
-  background-color: #121212;
+  background-color: #fff;
   margin: 0;
 }
 
@@ -98,6 +98,24 @@ body {
   width: 100%;
   z-index: 2;
 }
+.heroLogoText {
+  font-size: 28px; /* Anpassa textstorleken */
+  font-weight: bold; /* Gör texten fet för tydlighet */
+  text-align: center; /* Centrerar texten under loggan */
+  margin-top: 1px; /* Litet mellanrum mellan loggan och texten */
+  color: #fff; /* Justera färgen på texten */
+  z-index: 2; /* Säkerställ att texten är synlig ovanför overlay */
+}
+
+.heroLogo {
+  max-width: 150px; /* Justera storleken på loggan */
+ 
+  display: block;
+  margin-left: auto;
+  margin-right: auto; /* Centrerar loggan i hero-sektionen */
+  z-index: 2; /* Säkerställer att loggan visas över overlay */
+  position: relative; /* Förhindra att loggan hamnar bakom andra element */
+}
 
 .navLinks a {
   color: white;
@@ -107,19 +125,20 @@ body {
 }
 
 .navLinks a:hover {
-  color: #e91e63;
+  color: #333;
 }
 
 /* Section Styling */
 .section {
   padding: 60px 20px;
+  margin-top: 100px;
   text-align: center;
-  background: #1f1f1f;
+  background: #fff;
 }
 
 .section h2 {
   font-size: 2rem;
-  color: #e91e63;
+  color: #333;
   margin-bottom: 20px;
 }
 
@@ -157,4 +176,27 @@ body {
   .navLinks a {
     font-size: 1rem;
   }
+}
+.heroCards {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  position: relative;
+  bottom: -50px; /* Flytta korten längst ner i hero-sektionen */
+  z-index: 3; /* Se till att korten syns ovanför andra element */
+}
+
+.card {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 200px;
+  height: 150px;
+  text-align: center;
+}
+
+.card.halfInSection {
+  position: relative;
+  top: 50px; /* Flytta ner kortet så att det hamnar delvis i sektionen under */
 }
