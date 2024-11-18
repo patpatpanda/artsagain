@@ -1,35 +1,31 @@
 "use client"; // Detta gör att filen blir en klientkomponent
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import "./globals.css";
 import CallToAction from "./CallToAction";
+import Image from "next/image";
 
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [currentVideo, setCurrentVideo] = useState(0);
   const [language, setLanguage] = useState("en"); // 'en' för engelska, 'sv' för svenska
-
+  const videoRef = useRef(null);
   const videos = ["/videos/train.mp4", "/videos/sea.mp4", "/videos/road.mp4"];
 
-  const videoRef = useRef(null);
-
   useEffect(() => {
-    // Lyssna på när videon slutar spela
-    const videoElement = videoRef.current;
-
     const handleVideoEnd = () => {
       setCurrentVideo((prevVideo) => (prevVideo + 1) % videos.length);
     };
 
+    const videoElement = videoRef.current;
     videoElement.addEventListener("ended", handleVideoEnd);
 
     return () => {
       videoElement.removeEventListener("ended", handleVideoEnd);
     };
-  }, [currentVideo]);
+  }, [videos.length]);
 
   useEffect(() => {
-    // När currentVideo ändras, byt video källa och starta om
     const videoElement = videoRef.current;
     videoElement.src = videos[currentVideo];
     videoElement.load();
@@ -41,7 +37,6 @@ export default function Home() {
   const toggleLanguage = () => {
     setLanguage(language === "en" ? "sv" : "en");
   };
-
   return (
     <div>
       {/* Hero Section */}
