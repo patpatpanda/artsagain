@@ -1,4 +1,4 @@
-"use client"; // Detta gör att filen blir en klientkomponent
+"use client";
 
 import { useState, useEffect, useRef } from "react";
 import "./globals.css";
@@ -8,25 +8,33 @@ import Image from "next/image";
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [currentVideo, setCurrentVideo] = useState(0);
-  const [language, setLanguage] = useState("en"); // 'en' för engelska, 'sv' för svenska
-  const videoRef = useRef(null);
+  const [language, setLanguage] = useState("en");
+  const [isFading, setIsFading] = useState(false);
+
   const videos = ["/videos/train.mp4", "/videos/sea.mp4", "/videos/road.mp4"];
+  const videoRef = useRef(null);
 
   useEffect(() => {
+    const videoElement = videoRef.current;
+
     const handleVideoEnd = () => {
-      setCurrentVideo((prevVideo) => (prevVideo + 1) % videos.length);
+      setIsFading(true);
+      setTimeout(() => {
+        setCurrentVideo((prevVideo) => (prevVideo + 1) % videos.length);
+        setIsFading(false);
+      }, 500); // Matcha fade-durationen i CSS
     };
 
-    const videoElement = videoRef.current;
     videoElement.addEventListener("ended", handleVideoEnd);
 
     return () => {
       videoElement.removeEventListener("ended", handleVideoEnd);
     };
-  }, [videos.length]);
+  }, []);
 
   useEffect(() => {
     const videoElement = videoRef.current;
+
     videoElement.src = videos[currentVideo];
     videoElement.load();
     videoElement.play().catch((error) => {
@@ -37,6 +45,7 @@ export default function Home() {
   const toggleLanguage = () => {
     setLanguage(language === "en" ? "sv" : "en");
   };
+
   return (
     <div>
       {/* Hero Section */}
@@ -50,17 +59,24 @@ export default function Home() {
           <a href="#contact">{language === "en" ? "Contact" : "Kontakt"}</a>
         </nav>
 
-        <div className="heroVideoWrapper">
+        <div className={`heroVideoWrapper ${isFading ? "fading" : ""}`}>
           <video
+            ref={videoRef}
             className="heroVideo"
-            ref={videoRef} // Referens till videospelaren
-            autoPlay
             muted
+            autoPlay
+            playsInline
           />
         </div>
         <div className="heroOverlay"></div>
         <div className="heroContent">
-          <img src="/images/logo.png" alt="Logotyp" className="heroLogo" />
+          <Image
+            src="/images/logo.png"
+            alt="Logotyp"
+            width={150}
+            height={50}
+            className="heroLogo"
+          />
           <h3 className="heroLogoText">Arts Logistics</h3>
         </div>
       </header>
