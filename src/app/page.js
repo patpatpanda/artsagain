@@ -8,14 +8,15 @@ export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [currentVideo, setCurrentVideo] = useState(0);
 
+  // Array med video URLs
   const videos = ['/videos/train.mp4', '/videos/sea.mp4', '/videos/road.mp4'];
 
   useEffect(() => {
     const videoInterval = setInterval(() => {
-      setCurrentVideo((prevVideo) => (prevVideo + 1) % videos.length);
-    }, 5000); // Växla video var 5:e sekund
+      setCurrentVideo((prevVideo) => (prevVideo + 1) % videos.length); // Växla till nästa video
+    }, 5000); // Byt video var 5:e sekund
 
-    return () => clearInterval(videoInterval); // Rensa intervallet vid avmontering
+    return () => clearInterval(videoInterval); // Rensa intervallet när komponenten avmonteras
   }, []);
 
   const toggleMenu = () => {
@@ -26,8 +27,21 @@ export default function Home() {
     <div>
       {/* Hero Section */}
       <header className="hero">
+        {/* Navigation Links */}
+        <nav className="navLinks">
+          <a href="#about">About</a>
+          <a href="#services">Services</a>
+          <a href="#contact">Contact</a>
+        </nav>
+
         <div className="heroVideoWrapper">
-          <video className="heroVideo" key={currentVideo} autoPlay muted loop>
+          <video
+            className="heroVideo"
+            autoPlay
+            muted
+            loop
+            key={currentVideo} // Nyckel för att tvinga omrendering av video
+          >
             <source src={videos[currentVideo]} type="video/mp4" />
             Your browser does not support the video tag.
           </video>
@@ -37,29 +51,37 @@ export default function Home() {
           <img src="/images/logo.png" alt="Logotyp" className="heroLogo" />
           <h3 className="heroLogoText">Arts Logistics</h3>
         </div>
- {/* Cards */}
- <div className="heroCards">
-    <div className="card">Card 1</div>
-    <div className="card">Card 2</div>
-    <div className="card">Card 3</div>
-    <div className="card halfInSection">Card 4</div>
-  </div>
-
-        {/* Hamburger Menu */}
-        <div className="hamburger" onClick={toggleMenu}>
-          <span className="bar"></span>
-          <span className="bar"></span>
-          <span className="bar"></span>
-        </div>
-        
-        <nav className={`navLinks ${menuOpen ? 'open' : ''}`}>
-          <a href="#about">Om oss</a>
-          <a href="#inspired">Tjänster</a>
-          <a href="#destinations">Kontakt</a>
-        </nav>
       </header>
 
-      {/* Sections */}
+      {/* Cards Section */}
+      <div className="cardsContainer">
+        <div className="card">
+          <div className="cardIcon">🚢</div>
+          <h4>Sea</h4>
+          <p>Ship your goods anywhere with economy in mind.</p>
+          <button>Read more</button>
+        </div>
+        <div className="card">
+          <div className="cardIcon">✈️</div>
+          <h4>Air</h4>
+          <p>Fast and reliable air freight provided by professionals.</p>
+          <button>Read more</button>
+        </div>
+        <div className="card">
+          <div className="cardIcon">🚛</div>
+          <h4>Road</h4>
+          <p>Move your cargo flexibly and efficiently by road.</p>
+          <button>Read more</button>
+        </div>
+        <div className="card">
+          <div className="cardIcon">🌍</div>
+          <h4>Project logistics</h4>
+          <p>When the box doesn’t fit, we think outside of it.</p>
+          <button>Read more</button>
+        </div>
+      </div>
+
+      {/* Main Sections */}
       <section id="about" className="section">
         <h2>About Us</h2>
         <p>We provide exceptional travel experiences tailored to your needs.</p>
