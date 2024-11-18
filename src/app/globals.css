@@ -1,11 +1,11 @@
-/* Global Colors */
 :root {
-  --primary-color: #6B7754; /* Loggans gröna */
-  --background-color: #F5F5F0; /* Ljus beige */
-  --secondary-color: #3B3F33; /* Mörkgrön för kontrast */
-  --accent-color: #B8A383; /* Gyllene sand */
-  --text-color: #4A4A48; /* Mörkgrå för text */
+  --primary-color: #9C27B0; /* Lila för loggans färg */
+  --background-color: #ECEFF1; /* Ljus blågrå bakgrund */
+  --secondary-color: #263238; /* Mörkblågrå för kontrast */
+  --accent-color: #FF9800; /* Orange accent */
+  --text-color: #1B1B1B; /* Djup svart för text */
 }
+
 
 /* Reset */
 body, h1, h2, p, ul, li, a {

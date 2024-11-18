@@ -80,7 +80,7 @@
   font-size: 1rem;
   font-weight: bold;
   color: white;
-  background: linear-gradient(135deg, #4A5A39, #6B7754);
+  background: #333;
   border: none;
   border-radius: 25px;
   cursor: pointer;
@@ -88,7 +88,7 @@
 }
 
 .formButton:hover {
-  background: linear-gradient(135deg, #3B4C2F, #5D6848);
+  background: #c762a5;
   transform: translateY(-3px);
   box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
 }
