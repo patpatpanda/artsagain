@@ -200,6 +200,14 @@ body {
   opacity: 0.6;
   border-radius: 5px;
 }
+.separatortwo {
+  width: 80%;
+  height: 2px;
+  margin: 40px auto;
+  background: var(--primary-color);
+  opacity: 0.6;
+  border-radius: 5px;
+}
 
 .separator-gradient {
   background: linear-gradient(90deg, var(--accent-color), var(--secondary-color), var(--accent-color));
@@ -354,4 +362,52 @@ body {
   font-size: 3rem;
   margin-bottom: 10px;
   color: var(--accent-color); /* Gyllene sand för att framhäva ikonerna */
+}
+.footer {
+  background: var(--secondary-color); /* Mörkgrön */
+  color: var(--background-color); /* Ljus beige för text */
+  text-align: center;
+  padding: 20px 0;
+  border-top: 2px solid var(--primary-color); /* Loggans gröna */
+}
+
+.footerContent {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  line-height: 1.6;
+}
+
+.footer p {
+  margin: 5px 0;
+  font-size: 1rem;
+}
+
+@media (max-width: 768px) {
+  .footer {
+    padding: 15px 10px;
+  }
+
+  .footer p {
+    font-size: 0.9rem;
+  }
+}
+.languageButton {
+  background-color: var(--primary-color); /* Loggans gröna */
+  color: var(--background-color); /* Ljus beige text */
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.languageButton:hover {
+  background-color: var(--accent-color); /* Gyllene sand */
+  transform: scale(1.05); /* Liten zoom-effekt vid hover */
+}
+
+.languageButton:active {
+  transform: scale(0.95); /* Klick-feedback */
 }

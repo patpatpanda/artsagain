@@ -1,40 +1,40 @@
 "use client"; // Detta gör att filen blir en klientkomponent
 
-import { useState, useEffect } from 'react';
-
-import './globals.css';
-import CallToAction from './CallToAction';
-
-
+import { useState, useEffect } from "react";
+import "./globals.css";
+import CallToAction from "./CallToAction";
 
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [currentVideo, setCurrentVideo] = useState(0);
+  const [language, setLanguage] = useState("en"); // 'en' för engelska, 'sv' för svenska
 
-  // Array med video URLs
-  const videos = ['/videos/train.mp4', '/videos/sea.mp4', '/videos/road.mp4'];
+  const videos = ["/videos/train.mp4", "/videos/sea.mp4", "/videos/road.mp4"];
 
   useEffect(() => {
     const videoInterval = setInterval(() => {
-      setCurrentVideo((prevVideo) => (prevVideo + 1) % videos.length); // Växla till nästa video
-    }, 5000); // Byt video var 5:e sekund
+      setCurrentVideo((prevVideo) => (prevVideo + 1) % videos.length);
+    }, 5000);
 
-    return () => clearInterval(videoInterval); // Rensa intervallet när komponenten avmonteras
+    return () => clearInterval(videoInterval);
   }, []);
 
-  const toggleMenu = () => {
-    setMenuOpen(!menuOpen);
+  const toggleLanguage = () => {
+    setLanguage(language === "en" ? "sv" : "en");
   };
 
   return (
     <div>
       {/* Hero Section */}
       <header className="hero">
-        {/* Navigation Links */}
         <nav className="navLinks">
-          <a href="#about">About</a>
-          <a href="#services">Services</a>
-          <a href="#contact">Contact</a>
+        <button onClick={toggleLanguage} className="languageButton">
+  {language === "en" ? "Svenska" : "English"}
+</button>
+
+          <a href="#about">{language === "en" ? "About" : "Om oss"}</a>
+          <a href="#services">{language === "en" ? "Services" : "Tjänster"}</a>
+          <a href="#contact">{language === "en" ? "Contact" : "Kontakt"}</a>
         </nav>
 
         <div className="heroVideoWrapper">
@@ -43,7 +43,7 @@ export default function Home() {
             autoPlay
             muted
             loop
-            key={currentVideo} // Nyckel för att tvinga omrendering av video
+            key={currentVideo}
           >
             <source src={videos[currentVideo]} type="video/mp4" />
             Your browser does not support the video tag.
@@ -55,119 +55,196 @@ export default function Home() {
           <h3 className="heroLogoText">Arts Logistics</h3>
         </div>
       </header>
-{/* Cards Section */}
-<div className="cardsContainer">
-<div className="card">
-    <div className="cardIcon">✈️</div>
-    <h4>Air</h4>
-    <p>Fast and reliable air freight provided by professionals.</p>
-  </div>
-  <div className="card">
-    <div className="cardIcon">🚛</div>
-    <h4>Road</h4>
-    <p>Move your cargo flexibly and efficiently by road.</p>
-  </div>
-  <div className="card">
-  <div className="cardIcon">🚆</div> {/* Ändra ikonen till en tågemoji */}
-  <h4>Train</h4>
-  <p>Reliable and sustainable rail freight for efficient transport.</p> {/* Anpassa beskrivningen */}
-</div>
 
- 
-  <div className="card">
-    <div className="cardIcon">🚢</div>
-    <h4>Sea</h4>
-    <p>Ship your goods anywhere with economy in mind.</p>
-  </div>
- 
-  <div className="card">
-    <div className="cardIcon">🌍</div>
-    <h4>Project Logistics</h4>
-    <p>When the box doesn’t fit, we think outside of it.</p>
-  </div>
-  <div className="card">
-    <div className="cardIcon">⚡</div>
-    <h4>Express</h4>
-    <p>When speed is critical, we deliver with urgency and precision.</p>
-  </div>
-  <div className="card">
-    <div className="cardIcon">📦</div>
-    <h4>Courier</h4>
-    <p>Reliable and secure door-to-door courier services for your needs.</p>
-  </div>
-</div>
-
-
+      {/* Cards Section */}
+      <div className="cardsContainer">
+        <div className="card">
+          <div className="cardIcon">✈️</div>
+          <h4>{language === "en" ? "Air" : "Luft"}</h4>
+          <p>
+            {language === "en"
+              ? "Fast and reliable air freight provided by professionals."
+              : "Snabb och pålitlig flygfrakt av professionella."}
+          </p>
+        </div>
+        <div className="card">
+          <div className="cardIcon">🚛</div>
+          <h4>{language === "en" ? "Road" : "Väg"}</h4>
+          <p>
+            {language === "en"
+              ? "Move your cargo flexibly and efficiently by road."
+              : "Transportera ditt gods flexibelt och effektivt på väg."}
+          </p>
+        </div>
+        <div className="card">
+          <div className="cardIcon">🚆</div>
+          <h4>{language === "en" ? "Train" : "Tåg"}</h4>
+          <p>
+            {language === "en"
+              ? "Reliable and sustainable rail freight for efficient transport."
+              : "Pålitlig och hållbar tågfrakt för effektiv transport."}
+          </p>
+        </div>
+        <div className="card">
+          <div className="cardIcon">🚢</div>
+          <h4>{language === "en" ? "Sea" : "Sjö"}</h4>
+          <p>
+            {language === "en"
+              ? "Ship your goods anywhere with economy in mind."
+              : "Frakta dina varor överallt med ekonomi i åtanke."}
+          </p>
+        </div>
+        <div className="card">
+          <div className="cardIcon">🌍</div>
+          <h4>
+            {language === "en" ? "Project Logistics" : "Projektlogistik"}
+          </h4>
+          <p>
+            {language === "en"
+              ? "When the box doesn’t fit, we think outside of it."
+              : "När lådan inte passar, tänker vi utanför ramarna."}
+          </p>
+        </div>
+        <div className="card">
+          <div className="cardIcon">⚡</div>
+          <h4>{language === "en" ? "Express" : "Express"}</h4>
+          <p>
+            {language === "en"
+              ? "When speed is critical, we deliver with urgency and precision."
+              : "När hastighet är avgörande levererar vi med precision och noggrannhet."}
+          </p>
+        </div>
+        <div className="card">
+          <div className="cardIcon">📦</div>
+          <h4>{language === "en" ? "Courier" : "Kurir"}</h4>
+          <p>
+            {language === "en"
+              ? "Reliable and secure door-to-door courier services for your needs."
+              : "Pålitliga och säkra dörr-till-dörr kurirtjänster för dina behov."}
+          </p>
+        </div>
+      </div>
+     
       <section id="about" className="section">
-  <h2>About Us</h2>
+  <h2>{language === "en" ? "About Us" : "Om oss"}</h2>
   <div className="aboutContent">
     <p>
-      At ARTS, logistics is not just about transportation – it’s about delivering tailored solutions. We simplify logistics by offering one contact, one supplier, and one invoice. No complicated chains, just seamless service.
+      {language === "en"
+        ? "At ARTS, logistics is not just about transportation – it’s about creating solutions tailored to your specific needs."
+        : "På ARTS handlar logistik inte bara om transport – det handlar om att skapa lösningar som är skräddarsydda för dina specifika behov."}
     </p>
     <p>
-      With a global network and a personalized approach, we connect you with the best partners for your unique needs. Whether it's managing time-sensitive deliveries, optimizing routes, or handling customs, we ensure every step is smooth and transparent.
+      {language === "en"
+        ? "We believe in simplicity and efficiency. With one contact, one supplier, and one invoice, we remove the complexity of traditional logistics chains and offer seamless services that save you time and resources."
+        : "Vi tror på enkelhet och effektivitet. Med en kontakt, en leverantör och en faktura eliminerar vi komplexiteten i traditionella logistiklösningar och erbjuder smidiga tjänster som sparar dig tid och resurser."}
     </p>
     <p>
-      Choose ARTS for precision, reliability, and excellence in logistics. Discover the art of logistics with us!
+      {language === "en"
+        ? "Our global network ensures that we connect you with the best partners to handle your shipments, no matter where they need to go. From air and sea freight to road and rail transport, we cover every aspect of logistics to deliver exceptional results."
+        : "Vårt globala nätverk säkerställer att vi kopplar dig samman med de bästa partnerna för att hantera dina leveranser, oavsett var de behöver gå. Från flyg- och sjöfrakt till väg- och tågtjänster täcker vi alla aspekter av logistik för att leverera exceptionella resultat."}
+    </p>
+    <p>
+      {language === "en"
+        ? "Our team of logistics experts is dedicated to providing you with personalized service. We work closely with you to understand your challenges, mitigate risks, and find the most efficient and cost-effective solutions."
+        : "Vårt team av logistikexperter är dedikerade till att ge dig personlig service. Vi arbetar nära dig för att förstå dina utmaningar, minska risker och hitta de mest effektiva och kostnadseffektiva lösningarna."}
+    </p>
+    <p>
+      {language === "en"
+        ? "With ARTS, you can rest assured that your goods will be delivered on time, every time. Experience the difference of reliable, transparent, and customer-focused logistics services."
+        : "Med ARTS kan du vara säker på att dina varor levereras i tid, varje gång. Upplev skillnaden med pålitliga, transparenta och kundfokuserade logistiktjänster."}
+    </p>
+    <p>
+      {language === "en"
+        ? "Join us on our journey to redefine logistics. At ARTS, we make the impossible possible, one shipment at a time."
+        : "Följ med oss på vår resa att omdefiniera logistik. På ARTS gör vi det omöjliga möjligt, en leverans i taget."}
     </p>
   </div>
 </section>
 
-<div className="separator"></div> {/* Separator */}
-<section id="services" className="section servicesSection">
-  <h2>Our Services</h2>
+      <div className="separator">
+      </div>
+      <section id="services" className="section">
+  <h2>{language === "en" ? "Our Services" : "Våra tjänster"}</h2>
   <div className="servicesContainer">
     <div className="serviceCard">
       <div className="serviceIcon">🧠</div>
-      <h4>Expert Consultation</h4>
-      <p>Receive expert advice, risk assessments, and detailed planning.</p>
+      <h4>{language === "en" ? "Expert Consultation" : "Expertkonsultation"}</h4>
+      <p>
+        {language === "en"
+          ? "Receive expert advice, risk assessments, and detailed planning."
+          : "Få expertråd, riskbedömningar och detaljerad planering."}
+      </p>
     </div>
     <div className="serviceCard">
       <div className="serviceIcon">📊</div>
-      <h4>Risk Assessment</h4>
-      <p>Thorough analysis and strategic preparation for every project.</p>
-    </div>
-    <div className="serviceCard">
-      <div className="serviceIcon">📄</div>
-      <h4>Document Handling</h4>
-      <p>Seamlessly compile and manage all necessary documentation.</p>
+      <h4>{language === "en" ? "Risk Assessment" : "Riskbedömning"}</h4>
+      <p>
+        {language === "en"
+          ? "Thorough analysis and strategic preparation for every project."
+          : "Grundlig analys och strategisk förberedelse för varje projekt."}
+      </p>
     </div>
     <div className="serviceCard">
       <div className="serviceIcon">📦</div>
-      <h4>Packing and Handling</h4>
-      <p>Secure and proficient packing to ensure safe transportation.</p>
+      <h4>{language === "en" ? "Packing and Handling" : "Paketering och Hantering"}</h4>
+      <p>
+        {language === "en"
+          ? "Secure packing to ensure safety."
+          : "Säker paketering för att garantera säkerhet."}
+      </p>
+    </div>
+    <div className="serviceCard">
+      <div className="serviceIcon">📄</div>
+      <h4>{language === "en" ? "Document Handling" : "Dokumenthantering"}</h4>
+      <p>
+        {language === "en"
+          ? "Seamlessly compile and manage all necessary documentation."
+          : "Samla in och hantera alla nödvändiga dokument smidigt."}
+      </p>
     </div>
     <div className="serviceCard">
       <div className="serviceIcon">👁️</div>
-      <h4>Total Visibility</h4>
-      <p>Transparent and clear communication throughout the process.</p>
+      <h4>{language === "en" ? "Total Visibility" : "Total Synlighet"}</h4>
+      <p>
+        {language === "en"
+          ? "Transparent and clear communication throughout the process."
+          : "Transparent och tydlig kommunikation genom hela processen."}
+      </p>
     </div>
     <div className="serviceCard">
       <div className="serviceIcon">🧾</div>
-      <h4>Consolidated Invoice</h4>
-      <p>One contact, one supplier, and one invoice for simplicity.</p>
+      <h4>{language === "en" ? "Consolidated Invoice" : "Samlad Faktura"}</h4>
+      <p>
+        {language === "en"
+          ? "One contact, one supplier, and one invoice for simplicity."
+          : "En kontakt, en leverantör och en faktura för enkelhet."}
+      </p>
     </div>
     <div className="serviceCard">
       <div className="serviceIcon">🤝</div>
-      <h4>Devoted Support</h4>
-      <p>Personalized assistance and dedicated support for every need.</p>
+      <h4>{language === "en" ? "Devoted Support" : "Engagerat Stöd"}</h4>
+      <p>
+        {language === "en"
+          ? "Personalized assistance and dedicated support for every need."
+          : "Personligt stöd och dedikerat engagemang för alla behov."}
+      </p>
     </div>
   </div>
 </section>
-
-
-<div className="separator"></div> {/* Separator */}
-
+<div className="separatortwo">
+      </div>
 <section id="contact" className="section">
-  <h2>Contact</h2>
-  <p>Reach out to us for personalized travel plans.</p>
+  <CallToAction language={language} />
 </section>
 
 
-<CallToAction/>
       {/* Footer */}
       <footer className="footer">
-        <p>&copy; {new Date().getFullYear()} Get Lost in Norway. All rights reserved.</p>
+        <div className="footerContent">
+          <p>&copy; {new Date().getFullYear()} Arts Logistics. All rights reserved.</p>
+          <p>Cylindervägen 12, Vån 9</p>
+          <p>131 51 Nacka Strand</p>
+        </div>
       </footer>
     </div>
   );
