@@ -68,12 +68,14 @@ body {
   max-width: 150px;
   display: block;
   margin: 0 auto;
+  z-index: 1000;
 }
 
 .heroLogoText {
   font-size: 36px;
   font-weight: bold;
   margin-top: 20px;
+  z-index: 1000;
 }
 
 /* Navigation Links */
@@ -441,4 +443,57 @@ body {
   to {
     opacity: 0;
   }
+}
+.heroVideoWrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.heroVideoWrapper.fading {
+  opacity: 0;
+}
+
+.heroVideo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Overlay */
+.heroOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+/* Content (Logotyp och text) */
+.heroContent {
+  position: relative;
+  z-index: 10; /* Säkerställ att detta ligger över både videon och overlayen */
+  text-align: center;
+  color: white;
+  top: 30%;
+  transform: translateY(-50%);
+}
+
+.heroLogo {
+  max-width: 100px;
+  height: 100px;
+  margin: 0 auto;
+  display: block;
+}
+
+.heroLogoText {
+  margin-top: 10px;
+  font-size: 24px;
+  font-weight: bold;
 }
