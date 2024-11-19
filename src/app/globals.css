@@ -1,9 +1,9 @@
 :root {
-  --primary-color: #9C27B0; /* Lila för loggans färg */
-  --background-color: #ECEFF1; /* Ljus blågrå bakgrund */
-  --secondary-color: #263238; /* Mörkblågrå för kontrast */
-  --accent-color: #FF9800; /* Orange accent */
-  --text-color: #1B1B1B; /* Djup svart för text */
+  --primary-color: #4CAF50; /* Grön som signalerar tillväxt och pålitlighet */
+  --background-color: #F5F5F5; /* Ljus bakgrund för en ren design */
+  --secondary-color: #37474F; /* Mörkblågrå för kontrast och djup */
+  --accent-color: #FFC107; /* Guldaktig gul för energi och uppmärksamhet */
+  --text-color: #212121; /* Mörkgrå för läsbar text */
 }
 
 
