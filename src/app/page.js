@@ -120,16 +120,17 @@ export default function Home() {
           </p>
         </div>
         <div className="card">
-          <div className="cardIcon">🌍</div>
-          <h4>
-            {language === "en" ? "Project Logistics" : "Projektlogistik"}
-          </h4>
-          <p>
-            {language === "en"
-              ? "When the box doesn’t fit, we think outside of it."
-              : "När lådan inte passar, tänker vi utanför ramarna."}
-          </p>
-        </div>
+  <div className="cardIcon">🌍</div>
+  <h4>
+    {language === "en" ? "Project Logistics" : "Projektlogistik"}
+  </h4>
+  <p>
+    {language === "en"
+      ? "Tailored logistics solutions that elevate your business."
+      : "Skräddarsydda logistiklösningar som lyfter ditt företag."}
+  </p>
+</div>
+
         <div className="card">
           <div className="cardIcon">⚡</div>
           <h4>{language === "en" ? "Express" : "Express"}</h4>

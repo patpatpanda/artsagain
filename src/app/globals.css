@@ -125,7 +125,7 @@ body {
 
 .section h2 {
   font-size: 2rem;
-  color: var(--primary-color);
+  color:#333;
   margin-bottom: 20px;
 }
 
@@ -206,7 +206,7 @@ body {
   width: 80%;
   height: 2px;
   margin: 40px auto;
-  background: var(--primary-color);
+  background: #333;
   opacity: 0.6;
   border-radius: 5px;
 }
@@ -321,7 +321,7 @@ body {
 
 .servicesSection h2 {
   font-size: 2.5rem;
-  color: var(--primary-color);
+  color:#333;
   margin-bottom: 40px;
 }
 
@@ -332,10 +332,11 @@ body {
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
+  color:#333;
 }
 
 .serviceCard {
-  background: var(--primary-color);
+  background: var(--secondary-color);
   color: var(--background-color);
   padding: 20px;
   border-radius: 10px;
@@ -347,7 +348,7 @@ body {
 .serviceCard h4 {
   font-size: 1.4rem;
   margin-bottom: 10px;
-  color: var(--accent-color);
+  color: #fff;
 }
 
 .serviceCard p {
@@ -395,7 +396,7 @@ body {
   }
 }
 .languageButton {
-  background-color: var(--primary-color); /* Loggans gröna */
+  background-color: #37474F; /* Loggans gröna */
   color: var(--background-color); /* Ljus beige text */
   border: none;
   padding: 10px 20px;
@@ -406,7 +407,7 @@ body {
 }
 
 .languageButton:hover {
-  background-color: var(--accent-color); /* Gyllene sand */
+  background-color: #6b818b; /* Gyllene sand */
   transform: scale(1.05); /* Liten zoom-effekt vid hover */
 }
 

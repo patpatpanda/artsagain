@@ -18,7 +18,7 @@
 
 .sectionTitle {
   font-size: 2.2rem;
-  color: #4A5A39;
+  color: #37474F;
   margin-bottom: 0.5rem;
   text-align: center;
   font-family: 'Playfair Display', serif;
@@ -50,7 +50,7 @@
 
 .formLabel {
   font-size: 0.9rem;
-  color: #4A5A39;
+  color: #37474F;
   margin-bottom: 0.25rem;
   font-weight: bold;
 }
@@ -66,7 +66,7 @@
 }
 
 .formInput:focus {
-  border-color: #4A5A39;
+  border-color: #37474F;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   outline: none;
 }
@@ -80,7 +80,7 @@
   font-size: 1rem;
   font-weight: bold;
   color: white;
-  background: #333;
+  background: #37474F;
   border: none;
   border-radius: 25px;
   cursor: pointer;
@@ -88,7 +88,7 @@
 }
 
 .formButton:hover {
-  background: #c762a5;
+ 
   transform: translateY(-3px);
   box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
 }
@@ -99,7 +99,7 @@
 
 .formStatus {
   font-size: 0.9rem;
-  color: #4A5A39;
+  color:#37474F;
   text-align: center;
   margin-top: 1rem;
 }
@@ -111,7 +111,7 @@
 
 .socialTitle {
   font-size: 1.3rem;
-  color: #4A5A39;
+  color: #37474F;
   margin-bottom: 1rem;
 }
 
@@ -124,18 +124,18 @@
 
 .socialIcon {
   font-size: 1.5rem;
-  color: #4A5A39;
+  color: #37474F;
   transition: color 0.3s ease, transform 0.3s ease;
 }
 
 .socialIcon:hover {
-  color: #6B7754;
+  color: #37474F;
   transform: scale(1.1);
 }
 
 .contactInfo {
   font-size: 0.9rem;
-  color: #666;
+  color: #37474F;
   margin-top: 0.5rem;
 }
 
