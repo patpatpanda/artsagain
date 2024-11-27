@@ -15,11 +15,9 @@ body, h1, h2, p, ul, li, a {
   text-decoration: none;
 }
 
-body {
-  font-family: 'Roboto', sans-serif;
-  line-height: 1.6;
-  color: var(--text-color);
-  background-color: var(--background-color);
+html, body {
+  height: 100%;
+  overflow-x: hidden;
 }
 
 /* Hero Section */

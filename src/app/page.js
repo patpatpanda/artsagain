@@ -191,8 +191,7 @@ useEffect(() => {
   </div>
 </section>
 
-      <div className="separator">
-      </div>
+     
       <section id="services" className="section">
       <div className="sectionContent">
   <h2>{language === "en" ? "Our Services" : "Våra tjänster"}</h2>
@@ -263,8 +262,7 @@ useEffect(() => {
   </div>
   </div>
 </section>
-<div className="separatortwo">
-      </div>
+
 <section id="contact" className="section">
   <CallToAction language={language} />
 </section>
