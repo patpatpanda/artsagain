@@ -32,17 +32,17 @@ export default function Home() {
     };
   }, []);
 
-  useEffect(() => {
-    const videoElement = videoRef.current;
-    if (videoElement) {
-      videoElement.src = videos[currentVideo];
-      videoElement.load();
-      videoElement
-        .play()
-        .catch((error) => console.error("Video playback failed:", error));
-    }
-  }, [currentVideo]);
-  
+useEffect(() => {
+  const videoElement = videoRef.current;
+  if (videoElement) {
+    videoElement.src = videos[currentVideo];
+    videoElement.load();
+    videoElement
+      .play()
+      .catch((error) => console.error("Video playback failed:", error));
+  }
+}, [currentVideo]);
+
 
   const toggleLanguage = () => {
     setLanguage(language === "en" ? "sv" : "en");
@@ -194,6 +194,7 @@ export default function Home() {
       <div className="separator">
       </div>
       <section id="services" className="section">
+      <div className="sectionContent">
   <h2>{language === "en" ? "Our Services" : "Våra tjänster"}</h2>
   <div className="servicesContainer">
     <div className="serviceCard">
@@ -259,6 +260,7 @@ export default function Home() {
           : "Personligt stöd och dedikerat engagemang för alla behov."}
       </p>
     </div>
+  </div>
   </div>
 </section>
 <div className="separatortwo">
