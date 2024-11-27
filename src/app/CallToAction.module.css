@@ -80,7 +80,7 @@
   font-size: 1rem;
   font-weight: bold;
   color: white;
-  background: #465e4d;
+  background: #37474F;
   border: none;
   border-radius: 25px;
   cursor: pointer;
@@ -99,7 +99,7 @@
 
 .formStatus {
   font-size: 0.9rem;
-  color:#44374f;
+  color:#37474F;
   text-align: center;
   margin-top: 1rem;
 }

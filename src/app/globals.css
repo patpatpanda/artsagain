@@ -1,9 +1,9 @@
 :root {
-  --primary-color: #3c5548; /* Sofistikerad grön med en mjukare och modern känsla */
-  --background-color: #FAFAFA; /* Ännu ljusare bakgrund för en ren och luftig design */
-  --secondary-color: #4a9a70; /* En mer harmonisk grön nyans för kontrast */
-  --accent-color: #F7B500; /* Mjukare guldfärg som känns exklusiv men inte skrikig */
-  --text-color: #2B2B2B; /* En något ljusare mörkgrå för behaglig läsbarhet */
+  --primary-color: #4CAF50; /* Grön som signalerar tillväxt och pålitlighet */
+  --background-color: #F5F5F5; /* Ljus bakgrund för en ren design */
+  --secondary-color: #37474F; /* Mörkblågrå för kontrast och djup */
+  --accent-color: #FFC107; /* Guldaktig gul för energi och uppmärksamhet */
+  --text-color: #212121; /* Mörkgrå för läsbar text */
 }
 
 
@@ -125,19 +125,8 @@ body {
 
 .section h2 {
   font-size: 2rem;
-  color: var(--accent-color);
+  color:#333;
   margin-bottom: 20px;
-  position: relative;
-}
-
-.section h2::after {
-  content: "";
-  display: block;
-  width: 80px;
-  height: 4px;
-  background-color: var(--accent-color);
-  margin: 10px auto 0;
-  border-radius: 4px;
 }
 
 .section p {
@@ -188,7 +177,7 @@ body {
 
 /* Footer */
 .footer {
-  background: var(--primary-color);
+  background: var(--secondary-color);
   color: var(--background-color);
   text-align: center;
   padding: 20px 0;
@@ -378,7 +367,7 @@ body {
   color: var(--accent-color); /* Gyllene sand för att framhäva ikonerna */
 }
 .footer {
-  background: var(--primary-color); /* Mörkgrön */
+  background: var(--secondary-color); /* Mörkgrön */
   color: var(--background-color); /* Ljus beige för text */
   text-align: center;
   padding: 20px 0;
@@ -407,33 +396,24 @@ body {
   }
 }
 .languageButton {
-  background-color: var(--button-color); /* Primärfärg för CTA */
-  color: #ffffff; /* Vit text för kontrast */
-  border: 2px solid var(--button-color); /* Samma färg för en ren look */
-  padding: 12px 24px; /* Ökad padding för bättre klickyta */
+  background-color: #37474F; /* Loggans gröna */
+  color: var(--background-color); /* Ljus beige text */
+  border: none;
+  padding: 10px 20px;
   font-size: 1rem;
-  font-weight: bold;
-  border-radius: 30px; /* Rundad design för en mjukare look */
+  border-radius: 5px;
   cursor: pointer;
-  transition: all 0.3s ease; /* Smidig övergång */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Lätt skugga */
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .languageButton:hover {
-  background-color: #333; /* Invertera färger vid hover */
-  color: var(--button-color); /* Primärfärg för text */
-  border: 2px solid var(--button-color); /* Behåll tydlig kant */
-  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15); /* Förstärkt skugga */
-  transform: translateY(-2px); /* Lyft upp knappen något */
+  background-color: #6b818b; /* Gyllene sand */
+  transform: scale(1.05); /* Liten zoom-effekt vid hover */
 }
 
 .languageButton:active {
-  background-color: var(--hover-color); /* Mörkare blå för feedback */
-  color: #333; /* Vit text vid klick */
-  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2); /* Mindre skugga */
-  transform: translateY(1px); /* Klick-feedback */
+  transform: scale(0.95); /* Klick-feedback */
 }
-
 .heroVideoWrapper {
   position: relative;
   width: 100%;
@@ -518,10 +498,30 @@ body {
   font-size: 24px;
   font-weight: bold;
 }
-
-.heroVideoWrapper {
-  transition: opacity 0.5s ease-in-out;
+.languageButton {
+  background-color: var(--button-color); /* Primärfärg för CTA */
+  color: #ffffff; /* Vit text för kontrast */
+  border: 2px solid var(--button-color); /* Samma färg för en ren look */
+  padding: 12px 24px; /* Ökad padding för bättre klickyta */
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 30px; /* Rundad design för en mjukare look */
+  cursor: pointer;
+  transition: all 0.3s ease; /* Smidig övergång */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Lätt skugga */
 }
-.fading {
-  opacity: 0;
+
+.languageButton:hover {
+  background-color: #333; /* Invertera färger vid hover */
+  color: var(--button-color); /* Primärfärg för text */
+  border: 2px solid var(--button-color); /* Behåll tydlig kant */
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15); /* Förstärkt skugga */
+  transform: translateY(-2px); /* Lyft upp knappen något */
+}
+
+.languageButton:active {
+  background-color: var(--hover-color); /* Mörkare blå för feedback */
+  color: #ffffff; /* Vit text vid klick */
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2); /* Mindre skugga */
+  transform: translateY(1px); /* Klick-feedback */
 }
