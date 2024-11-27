@@ -1,9 +1,9 @@
 :root {
-  --primary-color: #465e4d; /* Grön som signalerar tillväxt och pålitlighet */
-  --background-color: #F5F5F5; /* Ljus bakgrund för en ren design */
-  --secondary-color: #63b377; /* Mörkblågrå för kontrast och djup */
-  --accent-color: #FFC107; /* Guldaktig gul för energi och uppmärksamhet */
-  --text-color: #212121; /* Mörkgrå för läsbar text */
+  --primary-color: #3c5548; /* Sofistikerad grön med en mjukare och modern känsla */
+  --background-color: #FAFAFA; /* Ännu ljusare bakgrund för en ren och luftig design */
+  --secondary-color: #4a9a70; /* En mer harmonisk grön nyans för kontrast */
+  --accent-color: #F7B500; /* Mjukare guldfärg som känns exklusiv men inte skrikig */
+  --text-color: #2B2B2B; /* En något ljusare mörkgrå för behaglig läsbarhet */
 }
 
 
@@ -125,8 +125,19 @@ body {
 
 .section h2 {
   font-size: 2rem;
-  color:#333;
+  color: var(--accent-color);
   margin-bottom: 20px;
+  position: relative;
+}
+
+.section h2::after {
+  content: "";
+  display: block;
+  width: 80px;
+  height: 4px;
+  background-color: var(--accent-color);
+  margin: 10px auto 0;
+  border-radius: 4px;
 }
 
 .section p {
