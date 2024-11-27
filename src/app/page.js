@@ -34,13 +34,15 @@ export default function Home() {
 
   useEffect(() => {
     const videoElement = videoRef.current;
-
-    videoElement.src = videos[currentVideo];
-    videoElement.load();
-    videoElement.play().catch((error) => {
-      console.error("Video playback failed:", error);
-    });
+    if (videoElement) {
+      videoElement.src = videos[currentVideo];
+      videoElement.load();
+      videoElement
+        .play()
+        .catch((error) => console.error("Video playback failed:", error));
+    }
   }, [currentVideo]);
+  
 
   const toggleLanguage = () => {
     setLanguage(language === "en" ? "sv" : "en");
@@ -61,12 +63,14 @@ export default function Home() {
 
         <div className={`heroVideoWrapper ${isFading ? "fading" : ""}`}>
           <video
-            ref={videoRef}
-            className="heroVideo"
-            muted
-            autoPlay
-            playsInline
-          />
+  ref={videoRef}
+  className="heroVideo"
+  muted
+  autoPlay
+  playsInline
+  preload="auto"
+/>
+
         </div>
         <div className="heroOverlay"></div>
         <div className="heroContent">
