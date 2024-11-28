@@ -1,57 +1,24 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState } from "react";
 import "./globals.css";
 import CallToAction from "./CallToAction";
 import Image from "next/image";
+import HeroVideo from "./HeroVideo";
 
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [currentVideo, setCurrentVideo] = useState(0);
   const [language, setLanguage] = useState("en");
-  const [isFading, setIsFading] = useState(false);
 
-  const videos = ["/videos/train.mp4", "/videos/sea.mp4", ];
-  const videoRef = useRef(null);
-
-  useEffect(() => {
-    const videoElement = videoRef.current;
-
-    const handleVideoEnd = () => {
-      setIsFading(true);
-      setTimeout(() => {
-        setCurrentVideo((prevVideo) => (prevVideo + 1) % videos.length);
-        setIsFading(false);
-      }, 500); // Matcha fade-durationen i CSS
-    };
-
-    videoElement.addEventListener("ended", handleVideoEnd);
-
-    return () => {
-      videoElement.removeEventListener("ended", handleVideoEnd);
-    };
-  }, []);
-
-useEffect(() => {
-  const videoElement = videoRef.current;
-  if (videoElement) {
-    videoElement.src = videos[currentVideo];
-    videoElement.load();
-    videoElement
-      .play()
-      .catch((error) => console.error("Video playback failed:", error));
-  }
-}, [currentVideo]);
-
+  const videos = ["/videos/train.mp4", "/videos/sea.mp4"];
 
   const toggleLanguage = () => {
     setLanguage(language === "en" ? "sv" : "en");
   };
-
   return (
     <div>
-      {/* Hero Section */}
-      <header className="hero">
+       {/* Hero Section */}
+       <header className="hero">
         <nav className="navLinks">
           <button onClick={toggleLanguage} className="languageButton">
             {language === "en" ? "Svenska" : "English"}
@@ -61,17 +28,8 @@ useEffect(() => {
           <a href="#contact">{language === "en" ? "Contact" : "Kontakt"}</a>
         </nav>
 
-        <div className={`heroVideoWrapper ${isFading ? "fading" : ""}`}>
-          <video
-  ref={videoRef}
-  className="heroVideo"
-  muted
-  autoPlay
-  playsInline
-  preload="auto"
-/>
+        <HeroVideo videos={videos} />
 
-        </div>
         <div className="heroOverlay"></div>
         <div className="heroContent">
           <Image
