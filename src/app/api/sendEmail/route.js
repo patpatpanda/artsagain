@@ -25,7 +25,7 @@ export async function POST(req) {
 
     // Inkludera användarens e-post i meddelandets innehåll
     const msg = {
-      to: 'nils-emil1337@hotmail.se',  // Mottagarens e-postadress
+      to: 'ops@artslogistics.se',  // Mottagarens e-postadress
       from: {
         email: 'emil.arrenius@student.kyh.se',  // Din verifierade SendGrid-e-postadress
         name: 'Mitt Företag'  // Namnet du vill visa som avsändare
