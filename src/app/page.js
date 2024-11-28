@@ -15,33 +15,26 @@ export default function Home() {
   const videoRef = useRef(null);
 
   useEffect(() => {
-    const videoElement = videoRef.current;
-
-    const handleVideoEnd = () => {
-      setIsFading(true);
-      setTimeout(() => {
-        setCurrentVideo((prevVideo) => (prevVideo + 1) % videos.length);
-        setIsFading(false);
-      }, 500); // Matcha fade-durationen i CSS
+    const preloadVideos = () => {
+      videos.forEach((video) => {
+        const videoElement = document.createElement("video");
+        videoElement.src = video;
+      });
     };
-
-    videoElement.addEventListener("ended", handleVideoEnd);
-
-    return () => {
-      videoElement.removeEventListener("ended", handleVideoEnd);
-    };
+    preloadVideos();
   }, []);
-
-useEffect(() => {
-  const videoElement = videoRef.current;
-  if (videoElement) {
-    videoElement.src = videos[currentVideo];
-    videoElement.load();
-    videoElement
-      .play()
-      .catch((error) => console.error("Video playback failed:", error));
-  }
-}, [currentVideo]);
+  
+  useEffect(() => {
+    const videoElement = videoRef.current;
+    if (videoElement) {
+      videoElement.src = videos[currentVideo];
+      videoElement.load();
+      videoElement
+        .play()
+        .catch((error) => console.error("Video playback failed:", error));
+    }
+  }, [currentVideo]);
+  
 
 
   const toggleLanguage = () => {
