@@ -1,9 +1,10 @@
 "use client";
+
 import React, { useState, useEffect } from "react";
 import { FaFacebook, FaInstagram, FaLinkedin } from "react-icons/fa";
 import styles from "./CallToAction.module.css";
 
-const CallToAction = ({ language }) => {
+const CallToAction = ({ language = "en" }) => {
   const [formData, setFormData] = useState({
     email: "",
     subject: "",
@@ -41,6 +42,8 @@ const CallToAction = ({ language }) => {
     },
   };
 
+  const t = translations[language] || translations.en;
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
@@ -51,7 +54,7 @@ const CallToAction = ({ language }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setStatus(translations[language].sending);
+    setStatus(t.sending);
 
     try {
       const response = await fetch("/api/sendEmail", {
@@ -61,20 +64,18 @@ const CallToAction = ({ language }) => {
       });
 
       if (response.ok) {
-        setStatus(translations[language].sent);
+        setStatus(t.sent);
         setFormData({ email: "", subject: "", message: "", honeypot: "" });
         setTimeout(() => setStatus(""), 4000);
       } else {
-        setStatus(translations[language].error);
+        setStatus(t.error);
         setTimeout(() => setStatus(""), 4000);
       }
     } catch (error) {
-      setStatus(translations[language].error);
+      setStatus(t.error);
       setTimeout(() => setStatus(""), 4000);
     }
   };
-
-  const t = translations[language]; // Hämtar översättningar baserat på valt språk
 
   return (
     <section id="contact" className={styles.contactSection}>
