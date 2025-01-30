@@ -230,8 +230,8 @@ export default function Home() {
       <footer className="footer">
         <div className="footerContent">
           <p>&copy; {new Date().getFullYear()} Arts Logistics. All rights reserved.</p>
-          <p>Cylindervägen 12, Vån 9</p>
-          <p>131 51 Nacka Strand</p>
+          <p>Upplandsgatan 82</p>
+          <p>113 44 Stockholm</p>
         </div>
       </footer>
     </div>
