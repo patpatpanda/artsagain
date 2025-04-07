@@ -533,3 +533,31 @@ html, body {
   box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2); /* Mindre skugga */
   transform: translateY(1px); /* Klick-feedback */
 }
+/* Career Section */
+#career {
+  background-color: #f4f4f4;
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+#career h2 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.careerContent {
+  max-width: 700px;
+  margin: 0 auto;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.careerLink {
+  color: #0070f3;
+  text-decoration: underline;
+  transition: color 0.3s ease;
+}
+
+.careerLink:hover {
+  color: #005bb5;
+}

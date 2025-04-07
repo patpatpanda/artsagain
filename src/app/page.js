@@ -19,14 +19,16 @@ export default function Home() {
     <div>
        {/* Hero Section */}
        <header className="hero">
-        <nav className="navLinks">
-          <button onClick={toggleLanguage} className="languageButton">
-            {language === "en" ? "Svenska" : "English"}
-          </button>
-          <a href="#about">{language === "en" ? "About" : "Om oss"}</a>
-          <a href="#services">{language === "en" ? "Services" : "Tjänster"}</a>
-          <a href="#contact">{language === "en" ? "Contact" : "Kontakt"}</a>
-        </nav>
+       <nav className="navLinks">
+  <button onClick={toggleLanguage} className="languageButton">
+    {language === "en" ? "Svenska" : "English"}
+  </button>
+  <a href="#about">{language === "en" ? "About" : "Om oss"}</a>
+  <a href="#career">{language === "en" ? "Career" : "Karriär"}</a>
+  <a href="#services">{language === "en" ? "Services" : "Tjänster"}</a>
+  <a href="#contact">{language === "en" ? "Contact" : "Kontakt"}</a>
+</nav>
+
 
         <HeroVideo videos={videos} />
 
@@ -149,7 +151,23 @@ export default function Home() {
   </div>
 </section>
 
-     
+<section id="career" className="section">
+  <h2>{language === "en" ? "Career Opportunities" : "Karriärmöjligheter"}</h2>
+  <div className="careerContent">
+    <p>
+      {language === "en"
+        ? "If you are interested in joining ARTS, whether for an internship or to submit an open application, please feel free to contact us at"
+        : "Om du är intresserad av att arbeta på ARTS, vare sig det gäller praktik eller en spontanansökan, är du varmt välkommen att kontakta oss på"}
+      <a href="mailto:career@artslogistics.se" className="careerLink"> career@artslogistics.se</a>.
+    </p>
+    <p>
+      {language === "en"
+        ? "We look forward to hearing from you."
+        : "Vi ser fram emot att höra från dig."}
+    </p>
+  </div>
+</section>
+
       <section id="services" className="section">
       <div className="sectionContent">
   <h2>{language === "en" ? "Our Services" : "Våra tjänster"}</h2>
